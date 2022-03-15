@@ -1,0 +1,73 @@
+    <main class="container">
+        <fieldset>
+            <legend>Formulário de Contato</legend>
+
+            <form>
+                <!-- Nome -->
+                <div class="form-group row">
+                    <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nome" placeholder="Nome completo">
+                    </div>
+                </div>
+
+                <!-- CONTATO -->
+                <div class="form-group row">
+                    <label for="contato" class="col-sm-2 col-form-label">Contato</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="contato" placeholder="nome@email.com">
+                    </div>
+                </div>
+
+                <!-- CEP -->
+                <div class="form-group row">
+                    <label for="cep" class="col-sm-2 col-form-label">CEP</label>
+                    <div class="col-sm-10">
+                        <input type="text" (blur)="getViaCep($event)" class="form-control" name="cep" placeholder="00000-000">
+                    </div>
+                </div>
+
+                <!-- Endereco - API -->
+                <div *ngIf="showForm | async " name = "retorno-cep">
+                    <div class="form-group row">
+                        <label for="rua" class="col-sm-2 col-form-label">Rua</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="rua" [(ngModel)]="formContato.logradouro">
+                        </div>
+                    </div>
+                    <!-- Numero -->
+                    <div class="form-group row">
+                        <label for="numero" class="col-sm-2 col-form-label">Número</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" name="numero" [(ngModel)]="formContato.complemento">
+                        </div>
+                    </div>
+                    <!-- Bairro -->
+                    <div class="form-group row">
+                        <label for="bairro" class="col-sm-2 col-form-label">Bairro</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="bairro" [(ngModel)]="formContato.bairro">
+                        </div>
+                    </div>
+                    <!-- Cidade/UF -->
+                    <div class="form-group row">
+                        <label for="cidade" class="col-sm-2 col-form-label">Cidade/UF</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="cidade" placeholder="Cidade" [(ngModel)]="formContato.localidade">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" name="uf" placeholder="UF"  [(ngModel)]="formContato.uf">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BUTTON -->
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+        </fieldset>
+    </main>
